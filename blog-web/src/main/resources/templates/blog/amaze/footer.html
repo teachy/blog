@@ -1,0 +1,50 @@
+<!DOCTYPE html><!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="am-topbar am-with-topbar-fixed-bottom">
+<footer class="blog-footer" th:fragment="footer-fragment">
+    <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>币圈豆子哥</h3>
+            <p class="am-text-sm">2015年正式加入币圈<br>
+                买过5000RMB的比特币、18RMB的莱特币、126RMB的以太坊<br>
+                参与过疯狂的ICO<br>
+                经历过悲催的94/312<br>
+                2020开始研究各种项目、众筹、挖矿，开始做一位合格的农民<br>
+            </p>
+        </div>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>农民的目标</h3>
+            <p>
+                <br>拿起锄头，找准方向</br>
+                <br>精准分析，做好风控</br>
+                <br>速度开挖，速速离场</br>
+            </p>
+        </div>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>注意</h3>
+            <p>*所有信息仅作为信息参考，不构成任何投资性建议，投资有风险，梭哈需谨慎。请树立正确的投资理念</p>
+        </div>
+    </div>
+    <div class="blog-text-center" th:text="${configurations.get('footerCopyRight')}">© 2020 AllMobilize, Inc. Licensed
+        under Apache license.
+    </div>
+    <div class="blog-text-center">
+        <a th:href="${configurations.get('footerPoweredBy')}">Powered By
+            <th:block th:text="${configurations.get('yourName')}"></th:block>
+        </a>
+    </div>
+    <div class="blog-text-center">
+        <a target="_blank" href="http://www.beian.miit.gov.cn/" th:text="${configurations.get('footerICP')}">冀
+            xxxxxx</a>
+    </div>
+    <div class="am-modal am-modal-no-btn am-modal-out" tabindex="-1" id="am-wechat"
+         style="display: none; margin-top: -159px;color: black">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"><a href="" class="am-close am-close-spin" data-am-modal-close="">×</a></div>
+            <div class="am-modal-bd"><img th:src="@{/blog/amaze/images/wx35673847.png}" alt="作者微信" style="width: 50%">
+                <br>有问题加我微信，不要闲聊！
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/blog/live2d-widget/autoload.js}"></script>
+</footer>
+</html>
