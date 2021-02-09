@@ -25,7 +25,7 @@ spring:
     slave:
       jdbc-url: jdbc:mysql://123.56.59.103:33306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
       username: root
-      password: Tu19891113
+      password:
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       hikari:

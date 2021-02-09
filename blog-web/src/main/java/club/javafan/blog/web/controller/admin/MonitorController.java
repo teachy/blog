@@ -31,15 +31,15 @@ import static club.javafan.blog.common.constant.RedisKeyConstant.EXCEPTION_AMOUN
 @RequestMapping("/admin")
 public class MonitorController {
     /**
-     *  注入系统信息
+     * 注入系统信息
      */
     @Autowired
     private SystemUtil systemUtil;
     /**
-     *  注入Guava缓存信息
+     * 注入Guava缓存信息
      */
     @Resource
-    private Cache<String,Object> guavaCache;
+    private Cache<String, Object> guavaCache;
 
     @RequestMapping("/blogs/monitor")
     public ModelAndView doMonitor() {
@@ -56,7 +56,7 @@ public class MonitorController {
         List<Long> pastDaysExceptionAmount = systemUtil.getPastDaysAmount(exceptionKeys);
         //获取guava缓存状态
         CacheStats stats = guavaCache.stats();
-        List<Long> guavaList = new ArrayList<Long>(){{
+        List<Long> guavaList = new ArrayList<Long>() {{
             add(stats.hitCount());
             add(stats.missCount());
             add(stats.loadSuccessCount());
@@ -68,8 +68,8 @@ public class MonitorController {
         modelAndView.addObject("pageData", pastDaysPageAmount);
         modelAndView.addObject("exceptionData", pastDaysExceptionAmount);
         modelAndView.addObject("indexDate", indexDate);
-        modelAndView.addObject("guavaStatus",guavaList);
-        modelAndView.addObject("memoryRate",systemUtil.getMemoryRate());
+        modelAndView.addObject("guavaStatus", guavaList);
+        modelAndView.addObject("memoryRate", systemUtil.getMemoryRate());
         return modelAndView;
     }
 }

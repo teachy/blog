@@ -37,11 +37,11 @@ public class CategoryController {
      */
     @RequestMapping(value = "/categories/list", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult list(@RequestParam Integer page,@RequestParam Integer limit) {
+    public ResponseResult list(@RequestParam Integer page, @RequestParam Integer limit) {
         if (Objects.isNull(page) || Objects.isNull(limit)) {
             return ResponseResult.failResult("参数异常！");
         }
-        PageQueryUtil pageUtil = new PageQueryUtil(page,limit);
+        PageQueryUtil pageUtil = new PageQueryUtil(page, limit);
         PageResult blogCategoryPage = categoryService.getBlogCategoryPage(pageUtil);
         return ResponseResult.successResult("成功！").setData(blogCategoryPage);
     }
@@ -52,9 +52,9 @@ public class CategoryController {
     @RequestMapping(value = "/categories/save", method = RequestMethod.POST)
     @ResponseBody
     public ResponseResult save(@RequestParam("categoryName") String categoryName,
-                       @RequestParam("categoryIcon") String categoryIcon) {
+                               @RequestParam("categoryIcon") String categoryIcon) {
         ResponseResult result = checkParams(categoryName, categoryIcon);
-        if (!result.isSuccess()){
+        if (!result.isSuccess()) {
             return result;
         }
         Boolean aBoolean = categoryService.saveCategory(categoryName, categoryIcon);
@@ -72,10 +72,10 @@ public class CategoryController {
     @RequestMapping(value = "/categories/update", method = RequestMethod.POST)
     @ResponseBody
     public ResponseResult update(@RequestParam("categoryId") Integer categoryId,
-                         @RequestParam("categoryName") String categoryName,
-                         @RequestParam("categoryIcon") String categoryIcon) {
+                                 @RequestParam("categoryName") String categoryName,
+                                 @RequestParam("categoryIcon") String categoryIcon) {
         ResponseResult result = checkParams(categoryName, categoryIcon);
-        if (!result.isSuccess()){
+        if (!result.isSuccess()) {
             return result;
         }
         Boolean aBoolean = categoryService.updateCategory(categoryId, categoryName, categoryIcon);
@@ -85,7 +85,6 @@ public class CategoryController {
             return ResponseResult.failResult("分类名称重复");
         }
     }
-
 
 
     /**
@@ -104,6 +103,7 @@ public class CategoryController {
             return ResponseResult.failResult("删除失败");
         }
     }
+
     private ResponseResult checkParams(@RequestParam("categoryName") String categoryName
             , @RequestParam("categoryIcon") String categoryIcon) {
         if (StringUtils.isEmpty(categoryName)) {

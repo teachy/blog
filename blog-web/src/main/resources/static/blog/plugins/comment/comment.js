@@ -1,11 +1,11 @@
-function qqfun(){
+function qqfun() {
     var qNumber = $('#qqNum').val();
     if (qNumber) {
         $.ajax({
-            type:'post',
+            type: 'post',
             url: "/blog/comment/getUserInfo",
-            data:{"qq":qNumber},
-            success:function (res) {
+            data: {"qq": qNumber},
+            success: function (res) {
                 if (res) {
                     console.log(res)
                     $('#email').val(res.qemail)
@@ -57,8 +57,8 @@ $('#commentSubmit').click(function () {
         return;
     }
     var data = {
-        "blogId": blogId, "verifyCode": verifyCode, "nickName": nickName,"headImg":headImg,
-        "qNumber":qNumber, "email": email, "websiteUrl": websiteUrl, "commentBody": commentBody
+        "blogId": blogId, "verifyCode": verifyCode, "nickName": nickName, "headImg": headImg,
+        "qNumber": qNumber, "email": email, "websiteUrl": websiteUrl, "commentBody": commentBody
     };
     console.log(data);
 
@@ -73,8 +73,7 @@ $('#commentSubmit').click(function () {
                 });
                 $('#commentBody').val('');
                 $('#verifyCode').val('');
-            }
-            else {
+            } else {
                 swal(result.desc, {
                     icon: "error",
                 });

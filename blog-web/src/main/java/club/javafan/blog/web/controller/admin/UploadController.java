@@ -28,6 +28,7 @@ import java.util.Random;
 public class UploadController {
     @Value("${file.file-path}")
     private String FILE_PATH;
+
     @PostMapping({"/upload/file"})
     @ResponseBody
     public ResponseResult upload(HttpServletRequest httpServletRequest, @RequestParam("file") MultipartFile file) throws Exception {

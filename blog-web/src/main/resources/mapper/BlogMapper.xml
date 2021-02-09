@@ -411,7 +411,7 @@
     <select id="getTotalBlogsByTagId" parameterType="Map" resultType="int">
         select count(*)
         from tb_blog
-        where  blog_id IN (SELECT blog_id FROM tb_blog_tag_relation WHERE tag_id = #{tagId})
+        where blog_id IN (SELECT blog_id FROM tb_blog_tag_relation WHERE tag_id = #{tagId})
         AND blog_status =1 AND is_deleted=0
     </select>
 

@@ -49,8 +49,7 @@ $(function () {
     function statusFormatter(cellvalue) {
         if (cellvalue == 0) {
             return "<button type=\"button\" class=\"btn btn-block btn-secondary btn-sm\" style=\"width: 50%;\">草稿</button>";
-        }
-        else if (cellvalue == 1) {
+        } else if (cellvalue == 1) {
             return "<button type=\"button\" class=\"btn btn-block btn-success btn-sm\" style=\"width: 50%;\">已发布</button>";
         }
     }
@@ -113,28 +112,28 @@ function deleteBlog() {
         buttons: true,
         dangerMode: true,
     }).then((flag) => {
-        if(flag) {
-            $.ajax({
-                type: "POST",
-                url: "/admin/blogs/delete",
-                contentType: "application/json",
-                data: JSON.stringify(ids),
-                success: function (r) {
-                    console.log(r)
-                    if (r.code == 0) {
-                        swal("删除成功", {
-                            icon: "success",
-                        });
-                        $("#jqGrid").trigger("reloadGrid");
-                    } else {
-                        swal(r.desc, {
-                            icon: "error",
-                        });
+            if (flag) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/blogs/delete",
+                    contentType: "application/json",
+                    data: JSON.stringify(ids),
+                    success: function (r) {
+                        console.log(r)
+                        if (r.code == 0) {
+                            swal("删除成功", {
+                                icon: "success",
+                            });
+                            $("#jqGrid").trigger("reloadGrid");
+                        } else {
+                            swal(r.desc, {
+                                icon: "error",
+                            });
+                        }
                     }
-                }
-            });
+                });
+            }
         }
-    }
-)
+    )
     ;
 }

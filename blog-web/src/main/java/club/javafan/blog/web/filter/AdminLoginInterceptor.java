@@ -23,6 +23,7 @@ public class
 AdminLoginInterceptor implements HandlerInterceptor {
     @Autowired
     private RedisUtil redisUtil;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String uri = request.getRequestURI();

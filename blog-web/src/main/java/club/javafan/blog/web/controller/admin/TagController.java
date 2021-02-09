@@ -34,8 +34,8 @@ public class TagController {
 
     @GetMapping("/tags/list")
     @ResponseBody
-    public ResponseResult list(@RequestParam Integer page,@RequestParam Integer limit) {
-        PageQueryUtil pageUtil = new PageQueryUtil(page,limit);
+    public ResponseResult list(@RequestParam Integer page, @RequestParam Integer limit) {
+        PageQueryUtil pageUtil = new PageQueryUtil(page, limit);
         PageResult blogTagPage = tagService.getBlogTagPage(pageUtil);
         return ResponseResult.successResult().setData(blogTagPage);
     }

@@ -35,11 +35,11 @@ public class LinkController {
 
     @GetMapping("/links/list")
     @ResponseBody
-    public ResponseResult list(@RequestParam Integer page,@RequestParam Integer limit) {
+    public ResponseResult list(@RequestParam Integer page, @RequestParam Integer limit) {
         if (isNull(page) || isNull(limit)) {
             return ResponseResult.failResult("参数错误！");
         }
-        PageQueryUtil pageUtil = new PageQueryUtil(page,limit);
+        PageQueryUtil pageUtil = new PageQueryUtil(page, limit);
         PageResult blogLinkPage = linkService.getBlogLinkPage(pageUtil);
         return ResponseResult.successResult().setData(blogLinkPage);
     }

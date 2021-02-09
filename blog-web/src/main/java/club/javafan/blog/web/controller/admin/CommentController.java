@@ -42,7 +42,7 @@ public class CommentController {
         if (Objects.isNull(page) || Objects.isNull(limit)) {
             return ResponseResult.failResult("参数异常！");
         }
-        PageQueryUtil pageUtil = new PageQueryUtil(page,limit);
+        PageQueryUtil pageUtil = new PageQueryUtil(page, limit);
         PageResult commentsPage = commentService.getCommentsPage(pageUtil);
         return ResponseResult.successResult("成功！").setData(commentsPage);
     }
@@ -64,8 +64,8 @@ public class CommentController {
     @PostMapping("/comments/reply")
     @ResponseBody
     public ResponseResult checkDone(@RequestParam("commentId") Long commentId,
-                            @RequestParam("replyBody") String replyBody) {
-        if (Objects.isNull(commentId)|| commentId < 1 || StringUtils.isEmpty(replyBody)) {
+                                    @RequestParam("replyBody") String replyBody) {
+        if (Objects.isNull(commentId) || commentId < 1 || StringUtils.isEmpty(replyBody)) {
             return ResponseResult.failResult("参数异常！");
         }
         Boolean reply = commentService.reply(commentId, replyBody);

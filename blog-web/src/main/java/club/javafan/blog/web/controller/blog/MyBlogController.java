@@ -57,10 +57,11 @@ public class MyBlogController {
     @Resource
     private QQUserInfo qqUserInfo;
     @Resource
-    private Cache<String,Object> guavaCache;
+    private Cache<String, Object> guavaCache;
     @Autowired
     private RedisUtil redisUtil;
     private Long EXPIRE_TIME = 60 * 60 * 24L;
+
     /**
      * 首页
      *
@@ -70,6 +71,7 @@ public class MyBlogController {
     public ModelAndView index(HttpServletRequest request) throws Exception {
         return this.page(1, 7);
     }
+
     /**
      * 首页 分页数据
      *
@@ -127,6 +129,7 @@ public class MyBlogController {
         modelAndView.addObject("categories", categoryService.getAllCategories());
         return modelAndView;
     }
+
     /**
      * 详情页
      *
@@ -139,7 +142,7 @@ public class MyBlogController {
         Object blog = guavaCache.getIfPresent(BLOG_DETAIL + blogId);
         //设置兜底值
         modelAndView.addObject("commentTotal", 0);
-        if (nonNull(blog)){
+        if (nonNull(blog)) {
             //增加浏览量
             BlogDetailVO blogDetailVO = (BlogDetailVO) blog;
             //增加博客的浏览量
@@ -152,9 +155,9 @@ public class MyBlogController {
             }
             modelAndView.addObject("commentPageResult", commentPageByBlogIdAndPageNum);
         }
-        if (isNull(blog)){
+        if (isNull(blog)) {
             BlogDetailVO blogDetailVO = blogService.getBlogDetail(blogId);
-            if (nonNull(blogDetailVO)){
+            if (nonNull(blogDetailVO)) {
                 //增加博客的浏览量
                 Long incr = addBlogView(blogId);
                 blogDetailVO.setBlogViews(incr);
@@ -166,7 +169,7 @@ public class MyBlogController {
                 modelAndView.addObject("commentPageResult", commentPageByBlogIdAndPageNum);
                 guavaCache.put(BLOG_DETAIL + blogId, blogDetailVO);
             }
-            if (isNull(blogDetailVO)){
+            if (isNull(blogDetailVO)) {
                 modelAndView.setViewName("error/error_400");
                 return modelAndView;
             }
@@ -398,6 +401,7 @@ public class MyBlogController {
         modelAndView.addObject("configurations", configService.getAllConfigs());
         return modelAndView;
     }
+
     @RequestMapping("/blog/comment/getUserInfo")
     @ResponseBody
     public QQUserInfoVO getUserInfo(@RequestParam String qq) throws Exception {

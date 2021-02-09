@@ -55,8 +55,8 @@ public class ConfigurationController {
     @PostMapping("/configurations/userInfo")
     @ResponseBody
     public ResponseResult userInfo(@RequestParam(value = "yourAvatar", required = false) String yourAvatar,
-                           @RequestParam(value = "yourName", required = false) String yourName,
-                           @RequestParam(value = "yourEmail", required = false) String yourEmail) {
+                                   @RequestParam(value = "yourName", required = false) String yourName,
+                                   @RequestParam(value = "yourEmail", required = false) String yourEmail) {
         int updateResult = 0;
         if (!StringUtils.isEmpty(yourAvatar)) {
             updateResult += configService.updateConfig("yourAvatar", yourAvatar);
@@ -74,10 +74,10 @@ public class ConfigurationController {
     @PostMapping("/configurations/footer")
     @ResponseBody
     public ResponseResult footer(@RequestParam(value = "footerAbout", required = false) String footerAbout,
-                         @RequestParam(value = "footerICP", required = false) String footerICP,
-                         @RequestParam(value = "footerCopyRight", required = false) String footerCopyRight,
-                         @RequestParam(value = "footerPoweredBy", required = false) String footerPoweredBy,
-                         @RequestParam(value = "footerPoweredByURL", required = false) String footerPoweredByURL) {
+                                 @RequestParam(value = "footerICP", required = false) String footerICP,
+                                 @RequestParam(value = "footerCopyRight", required = false) String footerCopyRight,
+                                 @RequestParam(value = "footerPoweredBy", required = false) String footerPoweredBy,
+                                 @RequestParam(value = "footerPoweredByURL", required = false) String footerPoweredByURL) {
         int updateResult = 0;
         if (!StringUtils.isEmpty(footerAbout)) {
             updateResult += configService.updateConfig("footerAbout", footerAbout);

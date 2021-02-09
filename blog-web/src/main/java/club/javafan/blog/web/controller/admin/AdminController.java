@@ -128,8 +128,8 @@ public class AdminController {
     @PostMapping("/profile/password")
     @ResponseBody
     public ResponseResult passwordUpdate(HttpServletRequest request,
-                                 @RequestParam("originalPassword") String originalPassword,
-                                 @RequestParam("newPassword") String newPassword) {
+                                         @RequestParam("originalPassword") String originalPassword,
+                                         @RequestParam("newPassword") String newPassword) {
         if (StringUtils.isEmpty(originalPassword) || StringUtils.isEmpty(newPassword)) {
             return ResponseResult.failResult("参数不能为空");
         }
@@ -149,8 +149,8 @@ public class AdminController {
     @PostMapping("/profile/name")
     @ResponseBody
     public ResponseResult nameUpdate(HttpServletRequest request,
-                             @RequestParam("loginUserName") String loginUserName,
-                             @RequestParam("nickName") String nickName) {
+                                     @RequestParam("loginUserName") String loginUserName,
+                                     @RequestParam("nickName") String nickName) {
         Cookie cookie = CookiesUtil.getCookie(LOGIN_USER_NAME, request.getCookies());
         if (isNull(cookie)) {
             return ResponseResult.failResult("修改失败！");
